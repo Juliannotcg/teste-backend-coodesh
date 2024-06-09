@@ -1,7 +1,6 @@
 # Backend Challenge - Pokémons
 >  This is a challenge by [Coodesh](https://coodesh.com/)
 
-> [!INFO]
 > Várias da implementações no projeto foram apenas para demonstrar conhecimento técnico, sem uma necessidade real de se utilizar em um projeto simples.
 
 ## Descrição projeto
