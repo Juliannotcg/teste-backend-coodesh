@@ -1,49 +1,60 @@
 # Backend Challenge - Pokémons
-
-## Introdução
-
-Este é um teste para que possamos ver as suas habilidades como Front Developer.
-
-Nesse teste você deverá desenvolver um projeto para listar pokémons, utilizando como base a API [https://pokeapi.co/](https://pokeapi.co/ "https://pokeapi.co/").
-
-[SPOILER] As instruções de entrega e apresentação do teste estão no final deste Readme (=
-
-### Antes de começar
- 
-- O projeto deve utilizar a Linguagem específica na avaliação. Por exempo: C#
-- Considere como deadline da avaliação a partir do início do teste. Caso tenha sido convidado a realizar o teste e não seja possível concluir dentro deste período, avise a pessoa que o convidou para receber instruções sobre o que fazer.
-- Documentar todo o processo de investigação para o desenvolvimento da atividade (README.md no seu repositório); os resultados destas tarefas são tão importantes do que o seu processo de pensamento e decisões à medida que as completa, por isso tente documentar e apresentar os seus hipóteses e decisões na medida do possível.
-
-## Backend-end
-
-- Get para 10 Pokémon aleatórios
-- GetByID para 1 Pokémon específico
-- Cadastro do mestre pokemon (dados básicos como nome, idade e cpf) em SQLite4 - Post para informar que um Pokémon foi capturado.5 - Listagem dos Pokémon já capturados.
-  
-
-### Requisitos
-
-1 - Todas elas devem retornar os dados básicos do Pokémon, suas evoluções e o base64 de sprite default de cada Pokémon.
-
-
-## Readme do Repositório
-
-- Deve conter o título do projeto
-- Uma descrição sobre o projeto em frase
-- Deve conter uma lista com linguagem, framework e/ou tecnologias usadas
-- Como instalar e usar o projeto (instruções)
-- Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
-- Se está usando github pessoal, referencie que é um challenge by coodesh:  
-
 >  This is a challenge by [Coodesh](https://coodesh.com/)
 
-## Finalização e Instruções para a Apresentação
+> [!INFO]
+> Várias da implementações no projeto foram apenas para demonstrar conhecimento técnico, sem uma necessidade real de se utilizar em um projeto simples.
 
-1. Adicione o link do repositório com a sua solução no teste
-2. Adicione o link da apresentação do seu projeto no README.md.
-3. Verifique se o Readme está bom e faça o commit final em seu repositório;
-4. Envie e aguarde as instruções para seguir. Sucesso e boa sorte. =)
+## Descrição projeto
 
-## Suporte
+Esse projeto é um teste técnico, o objetivo do projeto é o gerenciamento de pokemóns com as segeuintes funcionalidades: Busca aleatória de pokemons, busca de pokemón por id, cadastro de um mestre pokemón, cadastro de captura de pokemón e listagem de pokemóns capturados.
 
-Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobre o processo ou envie uma mensagem diretamente a um especialista no chat da plataforma. 
+Os dados dos pokemós serão fornecidos pela api: [https://pokeapi.co/](https://pokeapi.co/ "https://pokeapi.co/")
+
+## Estratégia de desenvolvimento
+
+A cada busca na api pokeapi o resultado da busca é salvo em um cache em memória, que apoia nas futuras buscas, sempre que ocorre uma nova busca a aplicação verifica primeiro no cache e caso não existe ela busca na api e atualiza o cache.
+São salvos no banco de dados SQLite apenas os dados que não são fornecidos pela api.
+
+### Tecnologias utilizadas
+ 
+Linguagem de programação: C#.
+Framework: .Net 8.
+IDE: Visual Studio.
+Bibliotecas Desenvolvimento: FluentValidation, Polly, Serilog, Swashbuckle.
+Bibliotecas Testes Unitários: Xunit, NSubstitute, FluentAssertions.
+
+### Arquitetura do projeto
+ 
+ >  Optei por modelo single project, que facilita o desenvolvimento em uma arquitetura hexagonal e evitando o modelo tradicional de camadas como Infra, Domain, Domain Core e etc. Esse modelo é muito utilizado em arquiteturas de micro serviços.
+
+ ![Arquitetua hexagonal](img/image.png)
+
+
+ ### Padrões, Designers e Modelos
+ 
+ >  Algumas das implementações foram apenas para demonstrar conhecimento, não sendo uma necessidade do projeto. 
+
+HealthCheck: Criei um end-point de health check que ajuda ferramentas de observabilidade a monitorar a saúde da aplicação.
+
+Fluent Validation: São validações dos dados de entrada com uma construção fluente e em bloco, com o apoio do pacote FluentValidation.
+
+EditorConfig: É uma configuração feito no Visual Studio que com a ajuda de um arquivo padroniza as identações, erros e warnings do projeto.
+
+Versionamento API: É o versionamento semântico dos end-points da api, o que garante que as evoluções da api não vão quebrar versões anteriores.
+
+Open API: Configurei o swagger no projeto que facilita a documentação da api com uma interface amigavél.
+
+Manipulador de erros: Foi criado um middleware personalizado para lidar com os erros e exceções gerados pela aplicação, isso garante uma padronização nas mensagem e trás também segurança ao expor dados dos erros de servidor.
+
+Http Client: Optei por criar um implementação do Http Client para um melhor controle das requisições HTTP, evitando utilizar ferramentas como Refit, Flur ou Restsharp.
+
+Configuration Builder: Implementei o padrão de leitura de arquivos de configuração e conversão em objetos c#.
+
+
+## Instruções
+
+Ao clonar o projeto e caso tenha o Visual Studio instalado no seu computador, basta executar o arquivo .sln, a IDE vai baixar os pacotes e atualiza-los, após isso basta apertar f5 ou dar play na aplicação que será criado um servidor .net ou IIS local na sua máquina e o navegador será aberto na página do swagger configurado, se não abrir basta colar https://localhost:7107/swagger/index.html nonavegador e dar enter.
+
+Caso não queira executar através do Visual Studio, basta seguir as instruções para executar via CLI do .net 
+ [https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run "https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-run")
+
