@@ -3,7 +3,7 @@
 
 > Várias da implementações no projeto foram apenas para demonstrar conhecimento técnico, sem uma necessidade real de se utilizar em um projeto simples.
 
-## Descrição projeto
+## Descrição do projeto
 
 Esse projeto é um teste técnico, o objetivo do projeto é o gerenciamento de pokemóns com as segeuintes funcionalidades: Busca aleatória de pokemons, busca de pokemón por id, cadastro de um mestre pokemón, cadastro de captura de pokemón e listagem de pokemóns capturados.
 
@@ -14,7 +14,7 @@ Os dados dos pokemós serão fornecidos pela api: [https://pokeapi.co/](https://
 A cada busca na api pokeapi o resultado da busca é salvo em um cache em memória, que apoia nas futuras buscas, sempre que ocorre uma nova busca a aplicação verifica primeiro no cache e caso não existe ela busca na api e atualiza o cache.
 São salvos no banco de dados SQLite apenas os dados que não são fornecidos pela api.
 
-### Tecnologias utilizadas
+## Tecnologias utilizadas
  
 Linguagem de programação: C#.
 Framework: .Net 8.
@@ -22,14 +22,14 @@ IDE: Visual Studio.
 Bibliotecas Desenvolvimento: FluentValidation, Polly, Serilog, Swashbuckle.
 Bibliotecas Testes Unitários: Xunit, NSubstitute, FluentAssertions.
 
-### Arquitetura do projeto
+## Arquitetura do projeto
  
  >  Optei por modelo single project, que facilita o desenvolvimento em uma arquitetura hexagonal e evitando o modelo tradicional de camadas como Infra, Domain, Domain Core e etc. Esse modelo é muito utilizado em arquiteturas de micro serviços.
 
  ![Arquitetua hexagonal](img/image.png)
 
 
- ### Padrões, Designers e Modelos
+## Padrões, Designers e Modelos
  
  >  Algumas das implementações foram apenas para demonstrar conhecimento, não sendo uma necessidade do projeto. 
 
