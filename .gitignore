@@ -396,3 +396,16 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Sonar lint
+.sonarlint
+# Visual Studio Code
+.vscode/
+test/Coodeshh.Challenge.Pokemon/ReportTests/
+
+# Test Results
+[Rr]esult*/
+TestResults*/
+TestResults*/
+coverageresults*/
+*.db
